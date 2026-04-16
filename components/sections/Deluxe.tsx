@@ -147,7 +147,7 @@ export default function Deluxe() {
               }`}
             >
               {p.featured && (
-                <div className="absolute top-6 right-6 btn-gold rounded-full px-3 py-1 text-[10px] uppercase tracking-[0.25em]">
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2 btn-gold rounded-full px-4 py-1 text-[10px] uppercase tracking-[0.3em] whitespace-nowrap shadow-gold-glow">
                   Best Value
                 </div>
               )}

@@ -12,6 +12,7 @@ const species = [
     copy:
       "The King. Staging in cold, deep thermoclines off Algoma. Long, screaming runs and a fight that defines a season.",
     accent: "from-gold/30 to-gold/0",
+    image: "/images/Screen-Shot-2022-05-09-at-2.24.16-PM.png",
   },
   {
     name: "Steelhead",
@@ -21,6 +22,7 @@ const species = [
     copy:
       "Acrobatic rainbow trout that tear line off downriggers and go airborne the moment they feel steel. Fast, silver, unforgettable.",
     accent: "from-aqua/30 to-aqua/0",
+    image: "/images/Screen-Shot-2022-05-09-at-2.24.01-PM.png",
   },
   {
     name: "Lake Trout",
@@ -30,6 +32,7 @@ const species = [
     copy:
       "Deep-water brawlers native to the Great Lakes. Consistent producers on wire-line and downrigger setups — a dependable fight all year.",
     accent: "from-aqua/25 to-gold/0",
+    image: "/images/Screen-Shot-2022-05-09-at-2.23.49-PM.png",
   },
 ];
 
@@ -73,11 +76,26 @@ export default function Species() {
               />
 
               <div className="relative">
-                <div className="flex items-center justify-between mb-6">
-                  <div className="w-14 h-14 rounded-full glass-gold grid place-items-center">
-                    <Fish className="w-6 h-6 text-gold" strokeWidth={1.3} />
+                {/* Fish illustration panel */}
+                <div className="relative -mx-8 -mt-8 mb-6 h-52 overflow-hidden rounded-t-2xl bg-gradient-to-br from-[#1a3657] via-[#0d2847] to-[#05101f]">
+                  <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(144,224,239,0.25),transparent_60%)]" />
+                  <motion.img
+                    src={s.image}
+                    alt={s.name}
+                    className="absolute inset-0 w-full h-full object-contain p-6 drop-shadow-[0_10px_30px_rgba(0,180,216,0.35)]"
+                    style={{ mixBlendMode: "multiply" }}
+                  />
+                  <motion.img
+                    src={s.image}
+                    alt=""
+                    aria-hidden
+                    className="absolute inset-0 w-full h-full object-contain p-6 opacity-90 group-hover:scale-105 transition-transform duration-[1200ms]"
+                    style={{ mixBlendMode: "screen" }}
+                  />
+                  <div className="absolute top-3 right-3 w-10 h-10 rounded-full glass-gold grid place-items-center">
+                    <Fish className="w-4 h-4 text-gold" strokeWidth={1.4} />
                   </div>
-                  <span className="font-display text-6xl text-white/5 font-bold">
+                  <span className="absolute bottom-2 left-4 font-display text-6xl text-white/10 font-bold leading-none">
                     0{i + 1}
                   </span>
                 </div>
