@@ -76,13 +76,13 @@ export default function Boat() {
             transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
             className="relative"
           >
-            <div className="relative aspect-[5/6] rounded-2xl overflow-hidden shadow-lake-deep">
+            <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-lake-deep">
               <img
-                src="/images/rearRods-scaled.jpg"
-                alt="Rods rigged off the stern of the charter boat"
+                src="/images/boat-hero.jpg"
+                alt="The 38-foot Chris Craft charter boat on Lake Michigan"
                 className="w-full h-full object-cover scale-105 hover:scale-100 transition-transform duration-[1500ms]"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-midnight/60 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-midnight/70 via-transparent to-transparent" />
 
               <div className="absolute bottom-6 left-6 right-6 glass rounded-xl p-5">
                 <div className="flex items-center justify-between">
@@ -90,7 +90,7 @@ export default function Boat() {
                     <div className="text-[10px] uppercase tracking-[0.3em] text-gold">
                       Private Charter
                     </div>
-                    <div className="font-display text-2xl text-cream">Stern-rigged & ready</div>
+                    <div className="font-display text-2xl text-cream">Flybridge & Outriggers</div>
                   </div>
                   <div className="text-right">
                     <div className="font-display text-3xl shimmer-text">20</div>
@@ -99,6 +99,21 @@ export default function Boat() {
                 </div>
               </div>
             </div>
+
+            {/* Secondary stern-rods image as overlay */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3, duration: 0.9 }}
+              className="hidden md:block absolute -bottom-10 -left-10 w-48 h-36 rounded-xl overflow-hidden border-2 border-gold/60 shadow-gold-glow"
+            >
+              <img
+                src="/images/rearRods-scaled.jpg"
+                alt="Rods rigged off the stern"
+                className="w-full h-full object-cover"
+              />
+            </motion.div>
           </motion.div>
         </div>
       </div>

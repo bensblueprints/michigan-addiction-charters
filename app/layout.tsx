@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     title: "Michigan Addiction Charters | Algoma, WI",
     description:
       "35 years chasing trophy Salmon, Steelhead & Lake Trout out of Algoma, WI. Private charters aboard a 38' Chris Craft.",
-    images: ["/images/rearRods-scaled.jpg"],
+    images: ["/images/boat-hero.jpg"],
     type: "website",
   },
 };
@@ -56,7 +56,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               "@context": "https://schema.org",
               "@type": "LocalBusiness",
               name: "Michigan Addiction Charters",
-              image: "https://michiganaddiction.advancedmarketing.co/images/rearRods-scaled.jpg",
+              image: "https://michiganaddiction.advancedmarketing.co/images/boat-hero.jpg",
               telephone: "+1-920-784-3038",
               priceRange: "$$",
               address: {
