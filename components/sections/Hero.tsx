@@ -29,8 +29,8 @@ export default function Hero() {
         className="absolute inset-0 z-0"
       >
         <div
-          className="absolute inset-0 bg-cover bg-center scale-110"
-          style={{ backgroundImage: "url('/images/boat-hero.jpg')" }}
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: "url('/images/rearRods-scaled.jpg')" }}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-midnight/60 via-midnight/40 to-midnight" />
         <div className="absolute inset-0 bg-gradient-to-r from-midnight/80 via-midnight/10 to-midnight/80" />

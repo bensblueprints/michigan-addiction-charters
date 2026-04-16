@@ -82,38 +82,8 @@ export default function Boat() {
                 alt="The 38-foot Chris Craft charter boat on Lake Michigan"
                 className="w-full h-full object-cover scale-105 hover:scale-100 transition-transform duration-[1500ms]"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-midnight/70 via-transparent to-transparent" />
-
-              <div className="absolute bottom-6 left-6 right-6 glass rounded-xl p-5">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <div className="text-[10px] uppercase tracking-[0.3em] text-gold">
-                      Private Charter
-                    </div>
-                    <div className="font-display text-2xl text-cream">Flybridge & Outriggers</div>
-                  </div>
-                  <div className="text-right">
-                    <div className="font-display text-3xl shimmer-text">20</div>
-                    <div className="text-[9px] uppercase tracking-widest text-cream/50">Knots Max</div>
-                  </div>
-                </div>
-              </div>
+              <div className="absolute inset-0 bg-gradient-to-t from-midnight/40 via-transparent to-transparent" />
             </div>
-
-            {/* Secondary stern-rods image as overlay */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.3, duration: 0.9 }}
-              className="hidden md:block absolute -bottom-10 -left-10 w-48 h-36 rounded-xl overflow-hidden border-2 border-gold/60 shadow-gold-glow"
-            >
-              <img
-                src="/images/rearRods-scaled.jpg"
-                alt="Rods rigged off the stern"
-                className="w-full h-full object-cover"
-              />
-            </motion.div>
           </motion.div>
         </div>
       </div>
