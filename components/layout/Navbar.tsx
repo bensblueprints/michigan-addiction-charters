@@ -38,16 +38,16 @@ export default function Navbar() {
         }`}
       >
         <nav className="max-w-7xl mx-auto px-5 md:px-10 flex items-center justify-between">
-          <a href="#home" className="group flex items-center gap-3">
-            <div className="relative w-11 h-11 rounded-full bg-gold-sheen grid place-items-center shadow-gold-glow">
-              <span className="font-display text-abyss text-xl font-bold">M</span>
-              <div className="absolute inset-0 rounded-full ring-1 ring-gold/40 group-hover:ring-gold animate-pulse-glow" />
-            </div>
+          <a href="#home" className="group flex items-center gap-3" aria-label="Michigan Addiction Charters home">
             <div className="flex flex-col leading-tight">
-              <span className="font-display text-xl tracking-wide text-cream">
-                Michigan <span className="shimmer-text">Addiction</span>
-              </span>
-              <span className="text-[10px] uppercase tracking-[0.35em] text-aqua/80">
+              <img
+                src="/images/logo.png"
+                alt="Michigan Addiction Charters"
+                className={`transition-all duration-500 ${
+                  scrolled ? "h-6 md:h-7" : "h-7 md:h-9"
+                } w-auto drop-shadow-[0_2px_12px_rgba(212,164,55,0.35)] group-hover:drop-shadow-[0_2px_18px_rgba(212,164,55,0.6)]`}
+              />
+              <span className="text-[9px] md:text-[10px] uppercase tracking-[0.35em] text-aqua/80 mt-1.5 pl-0.5">
                 Algoma · Lake Michigan
               </span>
             </div>

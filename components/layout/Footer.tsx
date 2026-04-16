@@ -14,17 +14,14 @@ export default function Footer() {
       <div className="relative max-w-7xl mx-auto px-5 md:px-10">
         <div className="grid md:grid-cols-4 gap-12 mb-14">
           <div className="md:col-span-2">
-            <div className="flex items-center gap-3 mb-5">
-              <div className="w-12 h-12 rounded-full bg-gold-sheen grid place-items-center shadow-gold-glow">
-                <span className="font-display text-abyss text-2xl font-bold">M</span>
-              </div>
-              <div className="leading-tight">
-                <div className="font-display text-2xl text-cream">
-                  Michigan <span className="shimmer-text">Addiction</span>
-                </div>
-                <div className="text-[11px] uppercase tracking-[0.35em] text-aqua/80">
-                  Sport Fishing Charters
-                </div>
+            <div className="mb-5">
+              <img
+                src="/images/logo.png"
+                alt="Michigan Addiction Charters"
+                className="h-9 w-auto mb-3 drop-shadow-[0_2px_14px_rgba(212,164,55,0.35)]"
+              />
+              <div className="text-[11px] uppercase tracking-[0.35em] text-aqua/80 pl-0.5">
+                Sport Fishing Charters · Algoma, WI
               </div>
             </div>
             <p className="text-cream/60 text-sm leading-relaxed max-w-md">

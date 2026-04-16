@@ -6,7 +6,7 @@ import { Clock, Users, Anchor, ArrowRight } from "lucide-react";
 const trips = [
   {
     hours: 5,
-    price: "$1,199",
+    price: "$799",
     title: "Half-Day Charter",
     label: "5 Hours",
     tagline: "The classic morning or afternoon run.",
@@ -19,7 +19,7 @@ const trips = [
   },
   {
     hours: 6,
-    price: "$1,199",
+    price: "$899",
     title: "Standard Charter",
     label: "6 Hours",
     tagline: "Extra water time to work multiple patterns.",
