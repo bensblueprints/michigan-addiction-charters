@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Cormorant, Montserrat, Permanent_Marker } from "next/font/google";
 import "./globals.css";
+import ConvaiWidget from "@/components/ConvaiWidget";
 
 const cormorant = Cormorant({
   subsets: ["latin"],
@@ -74,7 +75,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           }}
         />
       </head>
-      <body>{children}</body>
+      <body>
+        {children}
+        <ConvaiWidget />
+      </body>
     </html>
   );
 }
