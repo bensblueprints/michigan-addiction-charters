@@ -3,6 +3,10 @@ providers = ["node"]
 [variables]
 NIXPACKS_NODE_VERSION = "20"
 NEXT_TELEMETRY_DISABLED = "1"
+DATA_DIR = "/app/data"
+
+[phases.setup]
+aptPkgs = ["python3", "make", "g++", "build-essential"]
 
 [phases.install]
 cmds = ["npm install --legacy-peer-deps"]
@@ -11,4 +15,4 @@ cmds = ["npm install --legacy-peer-deps"]
 cmds = ["npm run build"]
 
 [start]
-cmd = "npm run start"
+cmd = "mkdir -p /app/data && npm run start"
