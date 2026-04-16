@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import crypto from "crypto";
 import { db } from "@/lib/db";
 
 export const runtime = "nodejs";
@@ -7,26 +8,54 @@ export const dynamic = "force-dynamic";
 /**
  * ElevenLabs Conversational AI — post-call webhook receiver.
  *
- * Configure the agent's post-call webhook to POST here with shared secret
- * either as `?secret=` query or `X-Webhook-Secret` header.
- *
- * ElevenLabs sends a JSON payload with conversation_id, transcript, analysis,
- * metadata, etc. We normalize and persist it to the `calls` table.
+ * Auth:
+ *  - HMAC (preferred): ElevenLabs signs the body with the workspace webhook
+ *    secret and sends `ElevenLabs-Signature: t=<unix>,v0=<hex>`. Set env
+ *    ELEVENLABS_WEBHOOK_SECRET to the `wsec_...` value.
+ *  - Shared token fallback: `?secret=` query or `X-Webhook-Secret` header
+ *    matching ELEVENLABS_WEBHOOK_TOKEN.
  */
+function verifyHmac(raw: string, header: string | null, secret: string): boolean {
+  if (!header) return false;
+  const parts = Object.fromEntries(
+    header.split(",").map((p) => {
+      const [k, v] = p.split("=");
+      return [k.trim(), (v || "").trim()];
+    })
+  );
+  const t = parts["t"];
+  const v0 = parts["v0"];
+  if (!t || !v0) return false;
+  const payload = `${t}.${raw}`;
+  const expected = crypto.createHmac("sha256", secret).update(payload).digest("hex");
+  const a = Buffer.from(expected);
+  const b = Buffer.from(v0);
+  if (a.length !== b.length) return false;
+  return crypto.timingSafeEqual(a, b);
+}
+
 export async function POST(req: NextRequest) {
-  const secret = process.env.ELEVENLABS_WEBHOOK_SECRET;
-  if (secret) {
+  const raw = await req.text();
+
+  const hmacSecret = process.env.ELEVENLABS_WEBHOOK_SECRET;
+  const tokenSecret = process.env.ELEVENLABS_WEBHOOK_TOKEN;
+
+  let authorized = false;
+  if (hmacSecret) {
+    authorized = verifyHmac(raw, req.headers.get("elevenlabs-signature"), hmacSecret);
+  }
+  if (!authorized && tokenSecret) {
     const provided =
-      req.headers.get("x-webhook-secret") ||
-      req.nextUrl.searchParams.get("secret");
-    if (provided !== secret) {
-      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-    }
+      req.headers.get("x-webhook-secret") || req.nextUrl.searchParams.get("secret");
+    if (provided === tokenSecret) authorized = true;
+  }
+  if (!authorized && (hmacSecret || tokenSecret)) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   let body: any;
   try {
-    body = await req.json();
+    body = JSON.parse(raw);
   } catch {
     return NextResponse.json({ error: "Bad JSON" }, { status: 400 });
   }
